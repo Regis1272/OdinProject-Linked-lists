@@ -98,8 +98,56 @@ export default class LinkedList {
             // console.log("New Linkage:");
             // console.log(currNode.nextNode);
         }
-
     }
+
+    contains(value) {
+        let currNode = this.listHead;
+        if (currNode.value === value) {
+            return true;
+        }
+
+        while (currNode.nextNode !== null) {
+            currNode = currNode.nextNode;
+            if (currNode.value === value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    find(value) {
+        let i = 0;
+        let currNode = this.listHead;
+
+        if (currNode.value === value) {
+            return i;
+        } else {
+            
+            while (currNode.nextNode !== null) {
+                currNode = currNode.nextNode;
+                i++;
+                if (currNode.value === value) {
+                    return i;
+                }
+            }
+        }
+    }
+
+    toString() {
+        let currNode = this.listHead;
+        let listString = `( ${currNode.value} ) -> `;
+
+        while (currNode.nextNode !== null) {
+            currNode = currNode.nextNode;
+            listString += `( ${currNode.value} ) -> `
+        }
+
+        listString += "( null )";
+        return listString;
+    }
+
+    
 
 
 
