@@ -8,5 +8,7 @@ list.append("I am the HEAD");
 list.prepend("I am the NEW TAIL");
 
 console.log(list);
-console.log(list.head);
+
 console.log(list.size());
+
+console.log(list.head());

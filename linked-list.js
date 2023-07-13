@@ -1,22 +1,22 @@
 export default class LinkedList {
 
     constructor(){
-        this.head = null;
+        this.listHead = null;
     }
 
     append(value) {
 
         //Temp node to properly assign the 'nextNode' property
         let tmp = new Node();
-        tmp.nextNode = this.head;
+        tmp.nextNode = this.listHead;
         tmp.value = value;
 
         //Re-assign current head
-        this.head = tmp;
+        this.listHead = tmp;
     }
 
     prepend(value) {
-        let currNode = this.head;
+        let currNode = this.listHead;
 
         while(currNode.nextNode !== null) {
             currNode = currNode.nextNode;
@@ -36,7 +36,7 @@ export default class LinkedList {
 
     size() {
         let i = 0;
-        let currNode = this.head;
+        let currNode = this.listHead;
 
         if (currNode !== null) {
             i++;
@@ -49,6 +49,12 @@ export default class LinkedList {
 
         return i;
     }
+
+    head() {
+        return this.listHead;
+    }
+
+
 
 
 }
