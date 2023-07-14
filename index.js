@@ -2,46 +2,38 @@ import LinkedList from "./linked-list.js";
 
 let list = new LinkedList;
 
-// Empty list pop test
-list.pop()
+list.prepend("test1");
+list.append("test2");
+list.append("test3");
 
-list.append("I am the first TAIL");
-list.append("I am the HEAD");
-
-list.prepend("I am the NEW TAIL");
-
-console.log(list);
-
-console.log(list.size());
-
-console.log(list.head());
-
-console.log(list.tail());
-
-/* console.log(list.at(0));
-console.log(list.at(1));
-console.log(list.at(2)); */
-
-// I believe the code is running so fast that the
-// call to list.pop() interferes with the console.logs of the
-// 3 previous lines...
-// 
-// When commenting out the list.pop() call below,
-// the 3 previous console.logs work correctly.
-console.log("original list:");
-console.log(list);
-console.log(list.at(1));
-/* list.pop();
-console.log("popped list:")
-console.log(list); */
-
-console.log(list.contains("I am the HEAD"));
-console.log(list.contains("I am the first TAIL"));
-console.log(list.contains("I am the NEW TAIL"));
-
-console.log(list.find("I am the HEAD"));
-console.log(list.find("I am the first TAIL"));
-console.log(list.find("I am the NEW TAIL"));
-
-console.log(list.toString());
-
+console.log(list.toString()); // ( test1 ) -> ( test2 ) -> ( test3 ) -> ( null )
+console.log(list.size()); // 3
+console.log(list.head()); // Node {value: 'test1', nextNode: Node}
+console.log(list.tail()); // Node {value: 'test3', nextNode: Node}
+console.log(list.at(1)); // Node {value: 'test2', nextNode: Node}
+console.log(list.at(5));
+// Error: Out of list bounds.
+// null
+console.log(list.at(-2));
+// Error: Out of list bounds.
+// null
+list.pop();
+console.log(list.toString()); // ( test1 ) -> ( test2 ) -> ( null )
+console.log(list.contains("test1")); // true
+console.log(list.contains("test42")); // false
+console.log(list.find("test42"));
+// Error: No such value.
+// null
+list.insertAt("test3", 10);
+console.log(list.toString()); // ( test1 ) -> ( test2 ) -> ( test3 ) -> ( null )
+list.insertAt("testA", 0);
+console.log(list.toString()); // ( testA ) -> ( test1 ) -> ( test2 ) -> ( test3 ) -> ( null )
+list.insertAt("testXYZ", 2);
+console.log(list.toString()); // ( testA ) -> ( test1 ) -> ( testXYZ ) -> ( test2 ) -> ( test3 ) -> ( null )
+list.removeAt(42); // Error: Index out of range.
+list.removeAt(4);
+console.log(list.toString()); // ( testA ) -> ( test1 ) -> ( testXYZ ) -> ( test2 ) -> ( null )
+list.removeAt(1);
+console.log(list.toString()); // ( testA ) -> ( testXYZ ) -> ( test2 ) -> ( null )
+list.removeAt(0);
+console.log(list.toString()); // ( testXYZ ) -> ( test2 ) -> ( null )
